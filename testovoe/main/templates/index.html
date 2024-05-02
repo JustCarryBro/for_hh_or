@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% url 'update' as update %}
+<html>
+<head>
+<title>Django To Do List App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body style="background-color:#B5B8B1; text-color:black;">
+
+<div id="myDIV" class="header">
+
+  <form method="POST">
+    {% csrf_token %}
+    <input type="text" name="title" id="myInput" placeholder="Title" style="position:absolute;left:10%;top:5%;width:30%;height:5%;font-size:20px;border-radius:15px;">
+    <input type="text" name="desription" id="myInput2" placeholder="Description" style="position:absolute;left:10%;top:13%;width:50%;height:10%;font-size:20px;border-radius:15px;">
+    <button type="submit" class="addBtn" style="position:absolute;left:45%;top:5%;width:5%;height:5%;font-size:20px;border-radius:15px;background-color:orange;">Add</button>
+
+  </form>
+</div>
+<div id = "dsadsaa" style=position:absolute;left:5%;top:25%;width:80%;height:100%;font-size:20px;border-radius:15px;font-size:25px;">
+<ul id="myUL">
+  {% for todo in text reversed %}
+  <li>{{todo.id}} {{todo.title | title}} | {{todo.desription }} | {{todo.date}}  <span class="close"><a style="text-decoration: none; width:10%;height:10%;background-color:white;border-radius:5px;" href="delete/{{todo.id}}">Delete</a></span> <span class="close"><a style ="text-decoration:none; width:3%;height:3%;background-color:white;border-radius:5px;border-style: solid black;" href="update/{{todo.id}}">Update</a></span>
+  </li>
+
+  {% endfor %}
+</ul>
+
+
+
+</body>
+</html>
